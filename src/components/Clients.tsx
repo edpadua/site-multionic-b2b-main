@@ -1,0 +1,74 @@
+import { motion } from 'motion/react';
+import { generalImages } from '../assets/images';
+
+const logos = generalImages.clientLogos;
+
+export default function Clients() {
+  return (
+    <section className="py-20 bg-white overflow-hidden border-t border-gray-50">
+      <div className="container-custom mb-12 text-center">
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-2xl md:text-3xl font-bold text-brand-primary mb-4 uppercase"
+        >
+          Marcas que confiam na Multionic
+        </motion.h2>
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="text-black text-base md:text-lg max-w-2xl mx-auto font-normal"
+        >
+          Empresas de diferentes segmentos utilizam as soluções Multionic para apoiar suas rotinas de limpeza, higienização e manutenção.
+        </motion.p>
+      </div>
+
+      <div className="relative w-full overflow-hidden border-y border-gray-100 bg-white">
+        <div className="marquee-container flex py-12">
+          <div className="marquee-content flex animate-scroll">
+            {/* Set 1 */}
+            {logos.map((logo, index) => (
+              <div key={`set1-${index}`} className="flex-shrink-0 px-8 transition-all duration-300 hover:scale-110">
+                <img 
+                  src={logo} 
+                  alt="Client" 
+                  className="h-8 md:h-12 lg:h-14 w-auto object-contain brightness-[1.02] contrast-[1.05]"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+            ))}
+            {/* Set 2 (for loop) */}
+            {logos.map((logo, index) => (
+              <div key={`set2-${index}`} className="flex-shrink-0 px-8 transition-all duration-300 hover:scale-110">
+                <img 
+                  src={logo} 
+                  alt="Client" 
+                  className="h-8 md:h-12 lg:h-14 w-auto object-contain brightness-[1.02] contrast-[1.05]"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes scroll {
+          from { transform: translateX(0); }
+          to { transform: translateX(-50%); }
+        }
+        .animate-scroll {
+          display: flex;
+          width: fit-content;
+          animation: scroll 40s linear infinite;
+        }
+        .marquee-container:hover .animate-scroll {
+          animation-play-state: paused;
+        }
+      `}} />
+    </section>
+  );
+}

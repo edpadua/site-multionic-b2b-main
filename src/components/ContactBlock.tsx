@@ -1,0 +1,63 @@
+import { motion } from 'motion/react';
+import { Link } from 'react-router-dom';
+import { generalImages } from '../assets/images';
+
+export default function ContactBlock() {
+  return (
+    <section className="py-20 bg-[#3B529B] text-white relative">
+      <div className="container-custom">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Coluna Esquerda: Imagem com Overlap */}
+          <div className="relative order-2 lg:order-1">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative lg:-mt-40 lg:-mb-40"
+            >
+              <img 
+                src={generalImages.contactIllustration}
+                alt="Multionic Soluções Técnicas" 
+                className="w-full h-auto object-contain pointer-events-none"
+                referrerPolicy="no-referrer"
+              />
+            </motion.div>
+          </div>
+
+          {/* Coluna Direita: Texto e Botões */}
+          <div className="text-left order-1 lg:order-2">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 uppercase text-white"
+            >
+              Converse com nosso time comercial
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-white/80 text-lg md:text-xl mb-10 font-normal leading-relaxed"
+            >
+              Se sua empresa busca uma solução técnica, precisa entender melhor uma aplicação ou quer avaliar qual produto faz mais sentido para a operação, fale com nosso time.
+            </motion.p>
+    
+            <div className="flex flex-col sm:flex-row justify-start gap-4">
+              <Link to="/contato" className="w-full sm:w-auto">
+                <motion.button 
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-full sm:w-auto bg-[#6DB0DF] hover:bg-[#5ca0cf] text-white px-8 py-4 text-sm font-bold tracking-tight rounded-none transition-all duration-300 shadow-none border-none text-center"
+                >
+                  Solicitar avaliação técnica
+                </motion.button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
